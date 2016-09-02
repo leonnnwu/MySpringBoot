@@ -10,9 +10,15 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'spring-boot'
+apply plugin: 'war'
 
 jar {
-    baseName = 'myproject'
+    baseName = 'myspringboot'
+    version =  '0.0.1-SNAPSHOT'
+}
+
+war {
+    baseName = 'myspringboot'
     version =  '0.0.1-SNAPSHOT'
 }
 
@@ -23,5 +29,10 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+bootRun {
+    addResources = true
 }
